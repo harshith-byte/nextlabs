@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+{% load static %}  
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+        @import url("https://bootswatch.com/flatly/bootstrap.min.css");
+
+body {
+  padding-top: 50px;
+}
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 768px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    
+    transition: all 0.25s ease-out;
+    background:#ecf0f1;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -40%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 40%;
+  }
+
+  .sidebar-offcanvas {
+ 
+    top: 0;
+    width: 40%;
+    margin-left: 12px;
+  }
+}
+
+#sidebar {
+    padding:15px;
+    margin-top:10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              {% for obj in form %}
+                <h3 class="text-center">Hello, {{obj.Firstname}} {{obj.Lastname}}</h3>
+                {% endfor %}
+            </div>
+
+            <!-- /.nav-collapse -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.navbar -->
+    
+    <div class="container-fluid">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+                <div class="sidebar-nav">
+                    <ul class="sidebar-nav">
+    
+                        <a href="{% url 'admin_home' %}"><button type="button" class="btn btn-outline-dark btn-block">Home</button></a>
+                        <br>
+                        <a href="{% url 'listapps' %}"><button type="button" class="btn btn-outline-dark btn-block">List Tasks</button></a>
+                        <br>
+                        <a href="{% url 'Create_task' %}"><button type="button" class="btn btn-outline-dark btn-block">Add Task</button></a>
+                        
+                        <br>
+                        <a href="{% url 'admin_logout' %}"><button type="button" class="btn btn-outline-dark btn-block">Logout</button></a>
+                    </ul>
+                </div>
+                <!--/.well -->
+            </div>
+            <!--/span-->
+    
+            <div class="col-xs-12 col-sm-9">
+                {% block admininfo %}
+                {% endblock  %}
+                
+                {% block listtask %}
+                {% endblock  %}
+
+                {% block addtask %}
+                {% endblock  %}
+
+                {% block updatetask %}
+                {% endblock  %}
+
+                {% block deletetask %}
+                {% endblock  %}
+
+                {% block updateadminprofile %}
+                {% endblock %}
+            </div>
+            <!--/span-->
+    
+    
+        </div>
+        <!--/row-->
+
+    </div>
+    <!--/.container-->
+</body>
+</html>

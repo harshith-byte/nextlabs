@@ -1,0 +1,76 @@
+{% extends 'Customer/common.html' %}
+{% block addscreenshot %}
+<div class="container">
+    {% for obj in task %}
+    <form method="post">
+      {% csrf_token %}
+      <h2 class='text-center'>App</h2>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="first">App Name : </label>
+            {{obj.appname}}
+          </div>
+        </div>
+        <!--  col-md-6   -->
+  
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="last">App Link : </label>
+            {{obj.subcategoryname}}
+          </div>
+        </div>
+        <!--  col-md-6   -->
+      </div>
+  
+  
+  
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="company">App Category : </label>
+            {{obj.categoryname}}
+          </div>
+  
+  
+        </div>
+        <!--  col-md-6   -->
+  
+        <div class="col-md-6">
+  
+          <div class="form-group">
+            <label for="phone">App subcategory : </label>
+            {{obj.appsubcategory}}
+          </div>
+        </div>
+        <!--  col-md-6   -->
+      </div>
+      <!--  row   -->
+  
+  
+      <div class="row">
+        <div class="col-md-6">
+  
+          <div class="form-group">
+            <label for="email">Points : </label>
+            {{obj.points}}
+          </div>
+        </div>
+        <!--  col-md-6   -->
+  
+  
+        <!--  col-md-6   -->
+      </div>
+      <!--  row   -->
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Add Screenshot *</label>
+        <input type="file" class="form-control-file" id="screenshot" name="screenshot" required>
+      </div>
+  
+     <p> {{message}}</p>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% endfor %}
+  </div>
+{% endblock addscreenshot %}

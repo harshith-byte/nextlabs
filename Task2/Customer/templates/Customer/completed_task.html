@@ -1,0 +1,39 @@
+{% extends 'Customer/common.html' %}
+{% block completedtask %}
+
+<h3 class="text-center">Completed Task</h3>
+<hr>
+<div id="treatment-plan">
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>App Name</th>
+					<th>Category Name</th>
+					<th>Subcategory Name</th>
+					<th>App subcategory</th>
+					<th>Points</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for obj in task %}
+				<tr id="treatment-plan-row0">
+					<td>{{obj.appname}}</td>
+					<td>{{obj.categoryname}}</td>
+					<td>{{obj.subcategoryname}}</td>
+					<td>{{obj.appsubcategory}}</td>
+					<td>{{obj.points}}</td>
+					
+
+				</tr>
+				{% endfor %}
+				
+
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<p>{{content}}</p>
+{% endblock %}

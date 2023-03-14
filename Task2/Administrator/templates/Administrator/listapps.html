@@ -1,0 +1,95 @@
+{% extends 'Administrator/common.html' %}
+{% block listtask %}
+
+
+<div id="treatment-plan">
+	<div class="table-responsive">
+		<h2 class="text-center">Task List</h1>
+		<hr>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>App Name</th>
+					<th>Category Name</th>
+					<th>Subcategory Name</th>
+					<th>App subcategory</th>
+					<th>Points</th>
+					<th>status</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for obj in users %}
+				<tr id="treatment-plan-row0">
+					{% if obj.work == "completed" %}
+					<td>{{obj.appname}}</td>
+					<td>{{obj.categoryname}}</td>
+					<td>{{obj.subcategoryname}}</td>
+					<td>{{obj.appsubcategory}}</td>
+					<td>{{obj.points}}</td>
+					<td>{{obj.work}}</td>
+					
+
+					
+					<td>
+						
+					</td>
+					<td>
+						<a href="http://0.0.0.0:8000/administrator/deleteapp/{{obj.id}}/" data-toggle="modal"><button type="button" class="btn btn-outline-dark">Delete</button></a>
+					</td>
+					{% else %}
+					<td>{{obj.appname}}</td>
+					<td>{{obj.categoryname}}</td>
+					<td>{{obj.subcategoryname}}</td>
+					<td>{{obj.appsubcategory}}</td>
+					<td>{{obj.points}}</td>
+					<td>{{obj.work}}</td>
+					
+
+					<td>
+						<a href="http://0.0.0.0:8000/administrator/updateapps/{{obj.id}}/" data-toggle="modal"><button type="button" class="btn btn-outline-dark">Update</button></a>
+					</td>
+					<td>
+						<a href="http://0.0.0.0:8000/administrator/deleteapp/{{obj.id}}/" data-toggle="modal"><button type="button" class="btn btn-outline-dark">Delete</button></a>
+					</td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+				
+
+			</tbody>
+		</table>
+	
+    
+	</div>
+
+	<nav aria-label="Page navigation example">
+		{% if users.has_other_pages %}
+		<ul class="pagination justify-content-center">
+			{% if users.has_previous %}
+			<li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+			{% else %}
+			  <li class="disabled"><span>&laquo;</span></li>
+			{% endif %}
+			{% for i in users.paginator.page_range %}
+				{% if users.number == i %}
+					<li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+				{% else %}
+					<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+				{% endif %}
+		  	{% endfor %}
+
+		  {% if users.has_next %}
+		  <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+		  {% else %}
+		  <li class="disabled"><span>&raquo;</span></li>
+		  {% endif %}
+		</ul>
+		{% endif %}
+	  </nav>
+
+	<a href="{% url 'Create_task' %}" data-toggle="modal"><button type="button" class="btn btn-outline-dark">Add Task</button></a>
+</div>
+
+
+<p>{{content}}</p>
+{% endblock listtask %}

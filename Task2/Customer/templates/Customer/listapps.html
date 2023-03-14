@@ -1,0 +1,42 @@
+{% extends 'Customer/common.html' %}
+{% block listapps %}
+
+<h3 class="text-center">Tasks</h3>
+<hr>
+<div id="treatment-plan">
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>App Name</th>
+					<th>Category Name</th>
+					<th>Subcategory Name</th>
+					<th>App subcategory</th>
+					<th>Points</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for obj in list %}
+				<tr id="treatment-plan-row0">
+					<td>{{obj.appname}}</td>
+					<td>{{obj.categoryname}}</td>
+					<td>{{obj.subcategoryname}}</td>
+					<td>{{obj.appsubcategory}}</td>
+					<td>{{obj.points}}</td>
+					
+					<td>
+						<a href="http://0.0.0.0:8000/customer/addscreenshot/{{obj.id}}/" data-toggle="modal"><button type="button" class="btn btn-outline-dark">Add Screenshot</button></a>
+					</td>
+
+				</tr>
+				{% endfor %}
+				
+
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<p>{{content}}</p>
+{% endblock listapps %}

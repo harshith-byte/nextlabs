@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customer Details</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<style type="text/css">
+		@media (min-width:767px){
+			.registration{
+				max-width: 400px;
+			}
+		}
+	</style>
+    <script>
+        $('.datepicker').datepicker({
+            inline: true
+          });
+    </script>
+</head>
+<body>
+
+<div class="container">
+	<div class="registration mx-auto d-block w-100">
+		<div class="page-header text-center">
+			<h1></h1>
+		</div>
+		
+		<form action="" method="post" class="form-validate form-horizontal well" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset>
+				<legend>User Details</legend>
+				<div class="form-group">
+					<label for="firstname">First Name *</label>
+					<input type="text" class="form-control" id="Firstname" name="Firstname" required>
+				</div>
+				<div class="form-group">
+					<label for="lastname">Last Name *</label>
+					<input type="text" class="form-control" id="Lastname" name="Lastname" required>
+				</div>
+				<div class="form-group">
+					<label for="phoneno">Phone Number (+91) *</label>
+					<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" class="form-control" required>
+				</div>
+				<div class="form-group">
+					<label for="DOB">Date Of Birth *</label>
+					<input type="date" class="form-control" id="DOB" name="DOB" required>
+				</div>
+				<div class="form-group">
+					<label class="form-label" for="textAreaExample">Address *</label>
+					<textarea class="form-control" id="Address" name="Address" rows="4" required></textarea>
+				</div>
+
+				<div class="d-flex justify-content-between align-items-center">
+					<div class="form-group d-flex justify-content-start">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+{% extends 'Administrator/common.html' %}
+{% block updatetask %}
+<div class="container">
+  <form method='post'>
+    {% csrf_token %}
+    <h2 class='text-center'>Update Apps</h2>
+    <hr>
+    {% for obj in task %}
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="first">App Name *</label>
+          <input type="text" class="form-control" placeholder="{{obj.appname}}" id="appname" name="appname" required>
+        </div>
+      </div>
+      
+      <!--  col-md-6   -->
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="last">App Link *</label>
+          <input type="text" class="form-control" placeholder="{{obj.subcategoryname}}" id="subcategoryname" name="subcategoryname" required>
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="company">App Category *</label>
+          <select class="form-control" id="categoryname" name="categoryname" placeholder="{{obj.categoryname}}" required>
+            <option value='Books'>Books</option>
+            <option value='Business'>Business</option>
+            <option value='Developer'>Developer</option>
+            <option value='Education'>Education</option>
+            <option value='Entertainment'>Entertainment</option>
+          </select>
+        </div>
+
+
+      </div>
+      <!--  col-md-6   -->
+
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="phone">App subcategory *</label>
+
+          <select class="form-control" id="appsubcategory" name="appsubcategory" placeholder="{{obj.appsubcategory}}" required>
+            <option value='E_Reader'>E_Reader</option>
+            <option value='Fiction'>Fiction</option>
+            <option value='Non_Fiction'>Non_Fiction</option>
+            <option value='Accounting'>Accounting</option>
+            <option value='CRM'>CRM</option>
+            <option value='Database'>Database</option>
+            <option value='Desgin'>Desgin</option>
+            <option value='Development'>Development</option>
+            <option value='Language'>Language</option>
+            <option value='SocialMedia'>SocialMedia</option>
+          </select>
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    </div>
+    <!--  row   -->
+
+
+    <div class="row">
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="email">Points *</label>
+          <input type="text" class="form-control" id="points" name="points" placeholder="{{obj.points}}" required>
+        </div>
+      </div>
+      {% endfor %}
+      <!--  col-md-6   -->
+
+
+      <!--  col-md-6   -->
+    </div>
+    <!--  row   -->
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+  {% endblock updatetask %}
